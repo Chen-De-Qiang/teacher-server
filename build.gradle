@@ -1,0 +1,73 @@
+//plugins {
+//    id 'org.springframework.boot' version '2.1.8.RELEASE'
+//    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+//    id 'java'
+//    id 'war'
+//}
+//
+//
+//
+//repositories {
+//    mavenCentral()
+//    mavenLocal()
+//    maven {
+//        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+//    }
+//}
+//
+//dependencies {
+//    implementation 'org.springframework.boot:spring-boot-starter-web' // spring boot 依赖
+//    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter' // mybatis 依赖
+//    runtimeOnly 'mysql:mysql-connector-java' // mysql 依赖
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test' // spring boot 依赖
+//}
+buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+        }
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.cdq.teacher'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+//    maven {
+//        url = 'http://repo.inspur.com/artifactory/ecbu-gradle-release-local'
+//        credentials {
+//            username 'bss'
+//            password 'USTdYtIj'
+//        }
+}
+
+dependencies {
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
+    compile('org.projectlombok:lombok:1.18.2')
+    runtime('mysql:mysql-connector-java')
+    compile('mysql:mysql-connector-java')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile('com.alibaba:fastjson:1.2.5')
+    compile('com.github.pagehelper:pagehelper:5.1.2')
+}
+
+sourceSets.main.resources.srcDirs = ["src/main/java","src/main/resources"]
