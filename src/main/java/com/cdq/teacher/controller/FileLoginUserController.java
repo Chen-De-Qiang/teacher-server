@@ -39,8 +39,8 @@ public class FileLoginUserController {
     /**
      * 注册用户
      */
-    @GetMapping(value = "/registered")
-    public Result registered(User user){
+    @GetMapping(value = "/addStudent")
+    public Result addStudent(User user){
         return new Result(userService.inputUserInfoFile(user));
     }
 
