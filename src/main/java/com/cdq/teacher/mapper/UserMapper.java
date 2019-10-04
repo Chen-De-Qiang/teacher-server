@@ -1,10 +1,23 @@
 package com.cdq.teacher.mapper;
 
 import com.cdq.teacher.entity.User;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
+import java.util.List;
+
 public interface UserMapper {
-    User selectUser(@Param("userId") String userId);
+    User selectUser(String userName);
+
+    List<User> getAllUserMQL();
+
+    int deleteByPrimaryKey(String userId);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(String userId);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }

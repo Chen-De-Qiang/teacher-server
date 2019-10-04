@@ -9,7 +9,7 @@ public interface UserService {
     /**
      * 根据id查询用户所有的信息
      */
-    User selectUserInfo(String userId);
+    User selectUserInfo(String userName);
 
     /**
      * 通过用户名称查询用户
@@ -28,4 +28,12 @@ public interface UserService {
     boolean deleteUserFlie(String UserName);
 
     boolean modifyUserFlie(User user);
+
+    List<User> getAllUserMQL();
+
+    boolean addUserInfo(User user);
+
+    boolean deleteUser(String UserName);
+
+    boolean modifyUser(User user);
 }

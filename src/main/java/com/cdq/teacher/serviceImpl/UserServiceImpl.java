@@ -21,9 +21,30 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public User selectUserInfo(String userId) {
-        return userMapper.selectUser(userId);
+    public User selectUserInfo(String userName) {
+        return userMapper.selectUser(userName);
     }
+
+    @Override
+    public List<User> getAllUserMQL() {
+        return userMapper.getAllUserMQL();
+    }
+
+    @Override
+    public boolean addUserInfo(User user) {
+        return userMapper.insertSelective(user)>0;
+    }
+
+    @Override
+    public boolean deleteUser(String UserName) {
+        return userMapper.deleteByPrimaryKey(UserName)>0;
+    }
+
+    @Override
+    public boolean modifyUser(User user) {
+        return userMapper.updateByPrimaryKey(user)>0;
+    }
+
 
     /**
      * 通过用户名称查询用户

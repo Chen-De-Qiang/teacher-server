@@ -25,7 +25,7 @@ public class FileLoginUserController {
      */
     @GetMapping(value = "/loginUser")
     public Result loginUser(@RequestParam("userName") String userName){
-        return new Result(userService.selectUserInfoFile(userName));
+        return new Result(userService.selectUserInfo(userName));
     }
 
     /**
@@ -41,7 +41,7 @@ public class FileLoginUserController {
      */
     @GetMapping(value = "/addStudent")
     public Result addStudent(User user){
-        return new Result(userService.inputUserInfoFile(user));
+        return new Result(userService.addUserInfo(user));
     }
 
     /**
@@ -49,7 +49,7 @@ public class FileLoginUserController {
      */
     @GetMapping(value = "/deleteUser")
     public Result deleteUser(@RequestParam("userName") String userName){
-       return new Result(userService.deleteUserFlie(userName));
+       return new Result(userService.deleteUser(userName));
     }
 
     /**
@@ -57,6 +57,6 @@ public class FileLoginUserController {
      */
     @GetMapping(value = "/modifyUser")
     public Result modifyUser(User user){
-        return new Result(userService.modifyUserFlie(user));
+        return new Result(userService.modifyUser(user));
     }
 }
