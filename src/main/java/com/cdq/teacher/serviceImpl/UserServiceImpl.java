@@ -32,12 +32,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUserInfo(User user) {
-        return userMapper.insertSelective(user)>0;
+        user.setUserId(CreateId.genItemId());
+        return userMapper.insert(user)>0;
     }
 
     @Override
-    public boolean deleteUser(String UserName) {
-        return userMapper.deleteByPrimaryKey(UserName)>0;
+    public boolean deleteUser(String UserId) {
+        return userMapper.deleteByUserId(UserId)>0;
     }
 
     @Override

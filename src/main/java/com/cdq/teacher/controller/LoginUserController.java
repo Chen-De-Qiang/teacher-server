@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/login")
+@CrossOrigin
 public class LoginUserController {
 
     @Autowired
@@ -32,25 +33,25 @@ public class LoginUserController {
     /**
      * 注册用户
      */
-    @GetMapping(value = "/addStudent")
-    public Result addStudent(User user){
-        return new Result(userService.inputUserInfoFile(user));
+    @PostMapping(value = "/addStudent")
+    public Result addStudent(@RequestBody User user){
+        return new Result(userService.addUserInfo(user));
     }
 
     /**
      * 删除某个人——通过姓名
      */
     @GetMapping(value = "/deleteUser")
-    public Result deleteUser(@RequestParam("userName") String userName){
-        return new Result(userService.deleteUserFlie(userName));
+    public Result deleteUser(@RequestParam("UserId") String UserId){
+        return new Result(userService.deleteUser(UserId));
     }
 
     /**
      * 修改某人——通过姓名
      */
-    @GetMapping(value = "/modifyUser")
-    public Result modifyUser(User user){
-        return new Result(userService.modifyUserFlie(user));
+    @PostMapping(value = "/modifyUser")
+    public Result modifyUser(@RequestBody User user){
+        return new Result(userService.modifyUser(user));
     }
 
 

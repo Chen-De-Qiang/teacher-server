@@ -21,8 +21,17 @@
     select 
     <include refid="Base_Column_List" />
     from t_user
-    where user_id = #{userId,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR} and is_delete=0
   </select>
+
+  <select id="getAllUserMQL" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    where is_delete=0
+    order by create_at asc
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from t_user
     where user_id = #{userId,jdbcType=VARCHAR}
@@ -31,11 +40,11 @@
     insert into t_user (user_id, user_name, pass_word, 
       age, user_num, sex, 
       department, user_class, professional, 
-      birthday)
+      birthday,is_delete,create_at,update_at)
     values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER}, #{userNum,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
       #{department,jdbcType=VARCHAR}, #{userClass,jdbcType=VARCHAR}, #{professional,jdbcType=VARCHAR}, 
-      #{birthday,jdbcType=VARCHAR})
+      #{birthday,jdbcType=VARCHAR},0,now(),now())
   </insert>
   <insert id="insertSelective" parameterType="com.cdq.teacher.entity.User" >
     insert into t_user
@@ -148,6 +157,11 @@
       user_class = #{userClass,jdbcType=VARCHAR},
       professional = #{professional,jdbcType=VARCHAR},
       birthday = #{birthday,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="deleteByUserId" parameterType="java.lang.String" >
+    update t_user
+    set is_delete =1
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>

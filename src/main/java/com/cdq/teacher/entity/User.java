@@ -21,6 +21,10 @@ public class User {
 
     private String birthday;
 
+    private String isDelete;
+
+
+
     public String getUserId() {
         return userId;
     }

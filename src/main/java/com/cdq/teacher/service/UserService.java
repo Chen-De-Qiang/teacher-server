@@ -33,7 +33,7 @@ public interface UserService {
 
     boolean addUserInfo(User user);
 
-    boolean deleteUser(String UserName);
+    boolean deleteUser(String UserId);
 
     boolean modifyUser(User user);
 }
