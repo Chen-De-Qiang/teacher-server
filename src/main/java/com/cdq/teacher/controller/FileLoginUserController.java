@@ -25,7 +25,7 @@ public class FileLoginUserController {
      */
     @GetMapping(value = "/loginUser")
     public Result loginUser(@RequestParam("userName") String userName){
-        return new Result(userService.selectUserInfo(userName));
+        return new Result(userService.selectUserInfoFile(userName));
     }
 
     /**

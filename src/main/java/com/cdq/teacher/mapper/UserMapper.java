@@ -5,7 +5,7 @@ import com.cdq.teacher.entity.User;
 import java.util.List;
 
 public interface UserMapper {
-    User selectUser(String userName);
+    List<User> selectUser(User record);
 
     List<User> getAllUserMQL();
 

@@ -9,7 +9,7 @@ public interface UserService {
     /**
      * 根据id查询用户所有的信息
      */
-    User selectUserInfo(String userName);
+    List<User> selectUserInfo(User record);
 
     /**
      * 通过用户名称查询用户

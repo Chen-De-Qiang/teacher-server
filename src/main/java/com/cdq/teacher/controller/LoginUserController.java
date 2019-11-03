@@ -18,8 +18,8 @@ public class LoginUserController {
      * 搜索人——通过姓名
      */
     @GetMapping(value = "/loginUser")
-    public Result loginUser(@RequestParam("userName") String userName){
-        return new Result(userService.selectUserInfoFile(userName));
+    public Result loginUser(User record){
+        return new Result(userService.selectUserInfo(record));
     }
 
     /**
