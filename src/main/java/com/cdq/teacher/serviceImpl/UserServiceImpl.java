@@ -22,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> selectUserInfo(User record) {
+        if(record.getPageSize()!=null) {
+            record.setCurrentPage((record.getCurrentPage() - 1) * record.getPageSize());
+        }
         return userMapper.selectUser(record);
     }
 

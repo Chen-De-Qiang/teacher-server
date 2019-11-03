@@ -14,12 +14,15 @@ public class LoginUserController {
     @Autowired
     UserService userService;
 
-    /**
-     * 搜索人——通过姓名
-     */
-    @GetMapping(value = "/loginUser")
+
+    @GetMapping(value = "/getUser")
     public Result loginUser(User record){
-        return new Result(userService.selectUserInfo(record));
+        Result result=new Result();
+        result.setData(userService.selectUserInfo(record));
+        record.setCurrentPage(null);
+        record.setPageSize(null);
+        result.setTotalCount(userService.selectUserInfo(record).size());
+        return result;
     }
 
     /**

@@ -11,6 +11,8 @@ public class Result<T> {
 
     private T data;// 请求数据，对象或数组均可
 
+    private Integer totalCount;//数据总数
+
     public Result() {
         code=200;
         msg="SUCCESS";
@@ -86,12 +88,11 @@ public class Result<T> {
         this.data = data;
     }
 
-    @Override
-    public String toString() {
-        return "Result{" +
-                "code=" + code +
-                ", msg='" + msg + '\'' +
-                ", data=" + data +
-                '}';
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
     }
 }

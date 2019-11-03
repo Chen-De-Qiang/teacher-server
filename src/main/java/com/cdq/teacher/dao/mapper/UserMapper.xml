@@ -29,34 +29,37 @@
     <include refid="Base_Column_List" />
     from t_user
     <where>
-    <if test="userName != null" >
+    <if test="userName != null and userName!=''" >
       user_name = #{userName,jdbcType=VARCHAR}
     </if>
-    <if test="passWord != null" >
+    <if test="passWord != null and passWord!=''" >
       and pass_word = #{passWord,jdbcType=VARCHAR}
     </if>
-    <if test="age != null" >
+    <if test="age != null and age!=''" >
       and age = #{age,jdbcType=INTEGER}
     </if>
-    <if test="userNum != null" >
+    <if test="userNum != null and userNum!=''" >
       and user_num = #{userNum,jdbcType=VARCHAR}
     </if>
-    <if test="sex != null" >
+    <if test="sex != null and sex!=''" >
       and sex = #{sex,jdbcType=VARCHAR}
     </if>
-    <if test="department != null" >
+    <if test="department != null and department!=''" >
       and department = #{department,jdbcType=VARCHAR}
     </if>
-    <if test="userClass != null" >
+    <if test="userClass != null and userClass!=''" >
       and  user_class = #{userClass,jdbcType=VARCHAR}
     </if>
-    <if test="professional != null" >
+    <if test="professional != null and professional!=''" >
       and professional = #{professional,jdbcType=VARCHAR}
     </if>
-    <if test="birthday != null" >
+    <if test="birthday != null and birthday!=''" >
       and birthday = #{birthday,jdbcType=VARCHAR}
     </if>
       and is_delete=0
+    <if test="pageSize != null and currentPage !=null" >
+       limit #{currentPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER};
+    </if>
     </where>
   </select>
 
