@@ -2,14 +2,26 @@ server:
     port: 8088
 
 spring:
+    resources:
+        static-locations: classpath:/META-INF/resources/,classpath:/static,classpath:/resources/,file:${web.upload-path}
+    mvc:
+        static-path-pattern: /image/**
     datasource:
-         url: jdbc:mysql://127.0.0.1:3306/teacher?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
-         username: root
-         password: 654321
-         driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/teacher?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+        username: root
+        password: 654321
+        driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
     mapper-locations: classpath*:com/cdq/teacher/dao/mapper/*.xml
     configuration:
         map-underscore-to-camel-case: true
         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+web:
+    upload-path: C:/Users/27847/Desktop/uploadFile/
+
+app:
+    uploadFolder: C:/Users/27847/Desktop/uploadFile/
+    previewPath: http://127.0.0.1:8088/image/
