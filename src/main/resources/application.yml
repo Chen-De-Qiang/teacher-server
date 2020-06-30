@@ -7,17 +7,35 @@ spring:
     mvc:
         static-path-pattern: /image/**
     datasource:
-        url: jdbc:mysql://127.0.0.1:3306/teacher?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+        url: jdbc:mysql://127.0.0.1:3306/vhr?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
         username: root
         password: 654321
         driver-class-name: com.mysql.cj.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+    redis:
+        database: 0
+        host: localhost
+        port: 6379
+        password: 123456
+        jedis:
+            pool:
+                max-active: 8
+                max-idle: 8
+                max-wait: -1ms
+                min-idle: 0
+#                缓存配置
+    cache:
+        cache-names: menus_cache
+        redis:
+            time-to-live: 1800s
 
 mybatis:
     mapper-locations: classpath*:com/cdq/teacher/dao/mapper/*.xml
     configuration:
         map-underscore-to-camel-case: true
         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+##    日志配置
+#    config-location: classpath:/mybatis-config.xml
 
 web:
     upload-path: C:/Users/27847/Desktop/uploadFile/
