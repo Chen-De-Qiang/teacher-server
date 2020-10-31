@@ -16,8 +16,8 @@ public class LoginUserController {
     UserService userService;
 
     @GetMapping(value = "/loginUser")
-    public User loginUser(){
-        return userService.selectUserInfo("1");
+    public String loginUser(){
+        return userService.getAllUser();
     }
 
 
